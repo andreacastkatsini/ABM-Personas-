@@ -1,0 +1,40 @@
+<div>
+  <h1>Registro de Personas</h1>
+</div>
+<form nz-form [formGroup]="peopleDataForm">
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="dni">DNI</nz-form-label>
+    <nz-form-control [nzSpan]="14">
+      <input nz-input type="text" formControlName="dni">
+    </nz-form-control>
+  </nz-form-item >
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="name">Nombre</nz-form-label>
+    <nz-form-control [nzSpan]="14">
+      <input nz-input type="text" formControlName="name">
+    </nz-form-control>
+  </nz-form-item >
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="surname">Apellido</nz-form-label>
+    <nz-form-control [nzSpan]="14">
+      <input nz-input type="text" formControlName="surname">
+    </nz-form-control>
+  </nz-form-item >
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="address">Dirección</nz-form-label>
+    <nz-form-control [nzSpan]="14">
+      <input nz-input type="text" formControlName="address">
+    </nz-form-control>
+  </nz-form-item >
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="mobile">Telefono</nz-form-label>
+    <nz-form-control [nzSpan]="14">
+      <input nz-input type="number" formControlName="mobile">
+    </nz-form-control>
+  </nz-form-item >
+  <nz-form-item>
+    <nz-form-control [nzSpan]="14">
+      <button nz-button nzType="primary" [disabled]="!peopleDataForm.valid" (click)="saveForm()">Guardar</button>
+    </nz-form-control>
+  </nz-form-item >
+</form>

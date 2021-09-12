@@ -1,0 +1,25 @@
+<div>
+<h1>Listado de Personas</h1>
+</div>
+<nz-table #basicTable [nzData]="person">
+  <thead>
+    <tr>
+      <th *ngFor="let header of headers">{{header}}</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{data.Dni}}</td>
+      <td>{{data.Name}}</td>
+      <td>{{data.Surname}}</td>
+      <td>{{data.Address}}</td>
+      <td>{{data.Mobile}}</td>
+      <td>
+        <a>Edit</a>
+        <nz-divider nzType="vertical"></nz-divider>
+        <a nz-popconfirm nzPopconfirmTitle="popConfirmTitle" nzOkText="Aceptar" nzCancelText="Cancelar" (nzOnConfirm)="onConfirm(data.Dni)" (nzOnCancel)="onCancel()">Delete</a>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
