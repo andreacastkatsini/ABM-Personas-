@@ -1,4 +1,5 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Person } from '../models/persona';
@@ -7,7 +8,8 @@ import { Person } from '../models/persona';
   providedIn: 'root'
 })
 export class PersonaService {
-  url= 'assets/people.json';
+   cudOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'})};
+  url= 'api/people';
 
   constructor(private http: HttpClient) { }
 
@@ -15,24 +17,18 @@ export class PersonaService {
     return this.http.get<Person[]>(this.url);
   }
 
-  savePerson(person: Person): Observable<any> {
+  createPerson(person: Person): Observable<any> {
+
     return this.http.post(this.url, person,{ observe: 'response' });
   }
 
-  deletePerson(dni: number){
-    // const index = this.person.findIndex(x=> x.Dni=== dni);
-    // if(index !== -1){
-    //   this.person.splice(index,1);
-    //}
+  deletePerson(id: number): Observable<any> {
+
+    return this.http.delete(`${this.url}/${id}`,{ observe: 'response' });
   }
 
   editPerson(person: Person): Observable<any> {
-    return this.http.put(this.url, person,{ observe: 'response' });
+    return this.http.put(this.url + person.id, person,{ observe: 'response' });
   }
-
-  getSpecificPerson(): Observable<Person[]> {
-    return this.http.get<Person[]>(this.url);
-  }
-
 
 }

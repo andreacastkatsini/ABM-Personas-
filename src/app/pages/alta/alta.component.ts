@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { Person } from 'src/app/models/persona';
 import { PersonaService } from 'src/app/services/persona.service';
-
-
 
 @Component({
   selector: 'app-alta',
@@ -34,13 +33,17 @@ export class AltaComponent implements OnInit {
 
   saveForm() {
     const people: Person = {
+      id: 2,
       Dni: this.peopleDataForm.get('dni')?.value,
       Name: this.peopleDataForm.get('name')?.value,
       Surname: this.peopleDataForm.get('surname')?.value,
       Address: this.peopleDataForm.get('address')?.value,
       Mobile: this.peopleDataForm.get('mobile')?.value,
     }
-    this.personaService.savePerson(people);
+
+    this.personaService.createPerson(people).subscribe(response => {
+      console.log(response);
+    });
     this.peopleDataForm.reset('');
   }
 

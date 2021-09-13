@@ -1,21 +1,20 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { AltaComponent } from './pages/alta/alta.component';
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
+import { DataService } from 'src/data.service';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { HttpClientModule } from '@angular/common/http';
+import { IconsProviderModule } from './icons-provider.module';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { NgModule } from '@angular/core';
+import { NgzorroModule } from './shared/modules/ngzorro/ngzorro.module';
+import en from '@angular/common/locales/en';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
-import en from '@angular/common/locales/en';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppRoutingModule } from './app-routing.module';
-import { IconsProviderModule } from './icons-provider.module';
-import { NgzorroModule } from './shared/modules/ngzorro/ngzorro.module';
-import { AltaComponent } from './pages/alta/alta.component';
-// import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-// import { AltaData } from './models/alta-data';
-
 
 registerLocaleData(en);
 
@@ -33,7 +32,7 @@ registerLocaleData(en);
     IconsProviderModule,
     NgzorroModule,
     ReactiveFormsModule,
-    // InMemoryWebApiModule.forRoot(AltaData)
+    HttpClientInMemoryWebApiModule.forRoot(DataService, {post204: false, post409: true, dataEncapsulation: false}),
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

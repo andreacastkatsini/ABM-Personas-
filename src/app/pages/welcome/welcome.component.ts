@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Person } from 'src/app/models/persona';
 import { PersonaService } from 'src/app/services/persona.service';
@@ -36,7 +37,7 @@ export class WelcomeComponent implements OnInit {
   }
 
   onConfirm(Dni: number) {
-    this.personaService.deletePerson(Dni);
+    this.personaService.deletePerson(Dni).subscribe(response => console.log(response))
     this.getPeopleList();
 
   }
