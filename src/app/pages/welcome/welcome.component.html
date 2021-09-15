@@ -16,9 +16,9 @@
       <td>{{data.Address}}</td>
       <td>{{data.Mobile}}</td>
       <td>
-        <a>Edit</a>
+        <a (click)="navigate(data)">Editar</a>
         <nz-divider nzType="vertical"></nz-divider>
-        <a nz-popconfirm nzPopconfirmTitle="popConfirmTitle" nzOkText="Aceptar" nzCancelText="Cancelar" (nzOnConfirm)="onConfirm(data.id)" (nzOnCancel)="onCancel()">Delete</a>
+        <a nz-popconfirm nzPopconfirmTitle="popConfirmTitle" nzOkText="Aceptar" nzCancelText="Cancelar" (nzOnConfirm)="onConfirm(data.Dni)" (nzOnCancel)="onCancel()">Delete</a>
       </td>
     </tr>
   </tbody>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { NzMessageService } from 'ng-zorro-antd/message';
 import { Person } from 'src/app/models/persona';
 import { PersonaService } from 'src/app/services/persona.service';
 
@@ -21,7 +21,7 @@ export class WelcomeComponent implements OnInit {
   ]
 
   popConfirmTitle = 'Esta seguro que desea eliminar esta persona?'
-  constructor(private personaService: PersonaService) {
+  constructor(private personaService: PersonaService, private router: Router) {
 
   }
 
@@ -37,13 +37,21 @@ export class WelcomeComponent implements OnInit {
   }
 
   onConfirm(Dni: number) {
-    this.personaService.deletePerson(Dni).subscribe(response => console.log(response))
-    this.getPeopleList();
+    //Eliminar Person
+    // this.personaService.deletePerson(Dni).subscribe(response => console.log(response))
+    // this.getPeopleList();
+    console.log('La persona que se va a eliminar tiene DNI nro:', Dni);
 
   }
 
   onCancel() {
 
   }
+
+  navigate(data:any){
+    this.router.navigate(['/alta'],{queryParams: {...data}});
+  }
+
+
 
 }
