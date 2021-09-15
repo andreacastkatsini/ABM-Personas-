@@ -1,6 +1,3 @@
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { AltaComponent } from './pages/alta/alta.component';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,17 +18,14 @@ registerLocaleData(en);
 @NgModule({
   declarations: [
     AppComponent,
-    AltaComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     IconsProviderModule,
     NgzorroModule,
-    ReactiveFormsModule,
     HttpClientInMemoryWebApiModule.forRoot(DataService, {post204: false, post409: true, dataEncapsulation: false}),
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
